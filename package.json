@@ -4,7 +4,7 @@
   "description": "A javascript implementation of k-means clustering algorithm that include one/two dimentional arrays, and supports objects as well for coordinates.",
   "main": "kmeans.js",
   "scripts": {
-    "start": "nodemon server/server.js",
+    "start": "node server/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
