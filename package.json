@@ -21,6 +21,8 @@
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
     "express": "^4.15.3",
+    "kmeans-node": "^0.1.0",
+    "lodash": "^4.17.4",
     "nodemon": "^1.11.0"
   }
 }

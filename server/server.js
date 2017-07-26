@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cluster = require('./cluster.js');
 
 const app = express();
 
@@ -15,5 +16,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/cluster', (req, res) => {
-  res.send('got it');
+  const array = req.body.data, means = req.body.means;
+  const object = cluster(array, means);
+  res.send([object]);
 });
