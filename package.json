@@ -1,18 +1,26 @@
 {
   "name": "cluster-means",
   "version": "1.0.0",
-  "description": "",
+  "description": "A javascript implementation of k-means clustering algorithm that include one/two dimentional arrays, and supports objects as well for coordinates.",
+  "main": "kmeans.js",
   "scripts": {
-    "start": "nodemon server/server.js"
+    "start": "nodemon server/server.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ststar8623/cluster-means.git"
   },
   "author": "",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ststar8623/cluster-means/issues"
+  },
+  "homepage": "https://github.com/ststar8623/cluster-means#readme",
   "dependencies": {
     "bluebird": "^3.5.0",
     "body-parser": "^1.17.2",
-    "cors": "^2.8.3",
     "express": "^4.15.3",
-    "nodemon": "^1.11.0",
-    "underscore": "^1.8.3"
+    "nodemon": "^1.11.0"
   }
 }
