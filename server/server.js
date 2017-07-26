@@ -13,3 +13,7 @@ app.listen(3001, () => {
 app.get('/', (req, res) => {
   res.send('Hello World');
 });
+
+app.post('/cluster', (req, res) => {
+  res.send('got it');
+});
