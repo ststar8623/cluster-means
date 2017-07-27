@@ -2,6 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const kmeans = require('kmeans-node');
 const _ = require('lodash');
+var geocluster = require("geocluster");
+
 
 const app = express();
 
@@ -17,14 +19,31 @@ app.get('/', (req, res) => {
 });
 
 app.post('/cluster', (req, res) => {
-  const array = req.body.data, means = req.body.means;
-  var mapArrToObj = _.map(array, item => {
-    return {
-      x: item.latitude,
-      y: item.longitude,
-      data: item
-    }
-  });
-  var object = kmeans.object(mapArrToObj, means);
-  res.send([object]);
+
+  let photosArr = req.body.data 
+
+  let coordinates = _.map((photo) => {
+    
+    return [ photo.latitude, photo.longitude   ]
+
+  })
+
+  let data = geocluster(coordinates, 1.5);
+
+  res.status(200).send(data)
 });
+
+
+
+// app.post('/cluster', (req, res) => {
+//   const array = req.body.data, means = req.body.means;
+//   var mapArrToObj = _.map(array, item => {
+//     return {
+//       x: item.latitude,
+//       y: item.longitude,
+//       data: item
+//     }
+//   });
+//   var object = kmeans.object(mapArrToObj, means);
+//   res.send([object]);
+// });
