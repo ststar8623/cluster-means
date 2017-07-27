@@ -20,10 +20,9 @@ app.get('/', (req, res) => {
 
 app.post('/cluster', (req, res) => {
   let coors = req.body.data.map((photo) => {
-    return [Number(photo.latitude), Number(photo.longitude)]
+    return [Number(photo.latitude), Number(photo.longitude), photo]
   })
   let data2 = geocluster(coors, 1.5);
-  data2.push(req.body.data);
   res.status(200).send(data2)
 });
 
