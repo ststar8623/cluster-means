@@ -19,18 +19,12 @@ app.get('/', (req, res) => {
 });
 
 app.post('/cluster', (req, res) => {
-
-  let photosArr = req.body.data 
-
-  let coordinates = _.map(photosArr, (photo) => {
-    
-    return [ photo.latitude, photo.longitude   ]
-
+  let coor = req.body.data.map((photo) => {
+    return [Number(photo.latitude), Number(photo.longitude)]
   })
-
-  let data = geocluster(coordinates, 1.5);
-
-  res.status(200).send(data)
+  let data2 = geocluster(coor, 1.5);
+  data2.data = req.body.data;
+  res.status(200).send(data2)
 });
 
 
