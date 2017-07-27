@@ -20,6 +20,7 @@ app.post('/cluster', (req, res) => {
   const array = req.body.data, means = req.body.means;
   var mapArrToObj = _.map(array, item => {
     return {
+      ...item,
       x: item.latitude,
       y: item.longitude,
       data: item.distance
