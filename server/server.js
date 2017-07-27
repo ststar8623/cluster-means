@@ -19,12 +19,15 @@ app.get('/', (req, res) => {
 app.post('/cluster', (req, res) => {
   const array = req.body.data, means = req.body.means;
   var mapArrToObj = _.map(array, item => {
-    return {
-      ...item,
-      x: item.latitude,
-      y: item.longitude,
-      data: item.distance
-    }
+    item.x = item.latitude;
+    item.y = item.longitude;
+    item.data = item.distance;
+    // return {
+    //   x: item.latitude,
+    //   y: item.longitude,
+    //   data: item.distance
+    // }
+    return item;
   });
   var object = kmeans.object(mapArrToObj, means);
   res.send([object]);
