@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const cluster = require('./cluster.js');
+const kmeans = require('kmeans-node');
+const _ = require('lodash');
 
 const app = express();
 
@@ -17,6 +18,13 @@ app.get('/', (req, res) => {
 
 app.post('/cluster', (req, res) => {
   const array = req.body.data, means = req.body.means;
-  const object = cluster(array, means);
+  var mapArrToObj = _.map(array, item => {
+    return {
+      x: item.latitude,
+      y: item.longitude,
+      data: item.distance
+    }
+  });
+  var object = kmeans.object(mapArrToObj, means);
   res.send([object]);
 });
