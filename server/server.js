@@ -22,7 +22,7 @@ app.post('/cluster', (req, res) => {
 
   let photosArr = req.body.data 
 
-  let coordinates = _.map((photo) => {
+  let coordinates = _.map(photosArr, (photo) => {
     
     return [ photo.latitude, photo.longitude   ]
 
