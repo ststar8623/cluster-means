@@ -5,11 +5,12 @@ const _ = require('lodash');
 var geocluster = require("geocluster");
 
 
-const app = express();
+var app = express();
+var jsonParser       = bodyParser.json({limit:1024*1024*20, type:'application/json'});
+var urlencodedParser = bodyParser.urlencoded({ extended:true,limit:1024*1024*20,type:'application/x-www-form-urlencoding' })
 
-app.use(bodyParser.urlencoded({extended: true}));
-app.use(bodyParser.json());
-app.use(bodyParser({limit: '5mb'}))
+app.use(jsonParser);
+app.use(urlencodedParser);
 
 app.listen(process.env.PORT || 3001, () => {
   console.log('Server is listening on port 3001');
