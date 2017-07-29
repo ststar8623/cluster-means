@@ -19,6 +19,7 @@ app.get('/', (req, res) => {
 });
 
 app.post('/cluster', (req, res) => {
+  console.log('dataaaaaaaaa ', req.body.data);
   let coors = req.body.data.map((photo) => {
     return [Number(photo.latitude), Number(photo.longitude), photo]
   })
